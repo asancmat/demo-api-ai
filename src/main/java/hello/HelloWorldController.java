@@ -50,7 +50,7 @@ public class HelloWorldController {
 			
 			System.out.println("Recuperamos los datos de la query");
 			String[] query = new String[]{obj};
-			System.out.println(query[3]);
+			System.out.println(query.toString());
 			//List<AIContext> contexts = query[3];
 
 			JsonMapper mapper = new DefaultJsonMapper();
