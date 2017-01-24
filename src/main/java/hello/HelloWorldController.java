@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -48,15 +49,17 @@ public class HelloWorldController {
 				System.out.println("No hay entidades");
 			}
 			System.out.println("***");
-			
-			String[] query = new String[]{obj};
-			System.out.println(query);
-			
+
+			String[] query = new String[] { obj };
+			System.out.println(Arrays.toString(query));
+			for (String parametro : query) {
+				System.out.println(parametro);
+			}
+
 			System.out.println("Recuperamos los datos mediante requestExtra");
 			RequestExtras extrainfo = new RequestExtras();
-			
-			System.out.println(extrainfo.getContexts());
 
+			System.out.println(extrainfo.getContexts());
 
 			JsonMapper mapper = new DefaultJsonMapper();
 			WebhookObject webhookObject = mapper.toJavaObject(obj.toString(),
