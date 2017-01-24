@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.restfb.DefaultJsonMapper;
+import com.restfb.JsonMapper;
+import com.restfb.types.webhook.WebhookObject;
+
 import ai.api.model.AIRequest;
 
 @Controller
@@ -28,6 +32,9 @@ public class HelloWorldController {
         if(obj.contains("facebook")){
         	System.out.println("Peticion de facebook");
         	response = "hola usuario de facebook";
+        	JsonMapper mapper = new DefaultJsonMapper();
+        	WebhookObject webhookObject = mapper.toJavaObject(obj.toString(), WebhookObject.class);
+        	System.out.println(webhookObject.toString());
         }
         else{
         	response = "webhook Hello!";
