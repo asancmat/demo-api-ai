@@ -51,7 +51,7 @@ public class HelloWorldController {
 			
 			System.out.println("Recuperamos los datos mediante requestExtra");
 			RequestExtras extrainfo = new RequestExtras();
-			extrainfo.copyTo(request);
+			
 			System.out.println(extrainfo.getContexts());
 
 
