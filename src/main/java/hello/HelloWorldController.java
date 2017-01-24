@@ -12,6 +12,7 @@ import com.restfb.DefaultJsonMapper;
 import com.restfb.JsonMapper;
 import com.restfb.types.webhook.WebhookObject;
 
+import ai.api.RequestExtras;
 import ai.api.model.AIContext;
 import ai.api.model.AIRequest;
 import ai.api.model.Entity;
@@ -48,10 +49,11 @@ public class HelloWorldController {
 			}
 			System.out.println("***");
 			
-			System.out.println("Recuperamos los datos de la query");
-			String[] query = new String[]{obj};
-			System.out.println(query.toString());
-			//List<AIContext> contexts = query[3];
+			System.out.println("Recuperamos los datos mediante requestExtra");
+			RequestExtras extrainfo = new RequestExtras();
+			extrainfo.copyTo(request);
+			System.out.println(extrainfo.getContexts());
+
 
 			JsonMapper mapper = new DefaultJsonMapper();
 			WebhookObject webhookObject = mapper.toJavaObject(obj.toString(),
