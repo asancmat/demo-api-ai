@@ -49,6 +49,9 @@ public class HelloWorldController {
 			}
 			System.out.println("***");
 			
+			String[] query = new String[]{obj};
+			System.out.println(query);
+			
 			System.out.println("Recuperamos los datos mediante requestExtra");
 			RequestExtras extrainfo = new RequestExtras();
 			
