@@ -11,6 +11,7 @@ import com.restfb.JsonMapper;
 import com.restfb.types.webhook.WebhookObject;
 
 import ai.api.model.AIRequest;
+import ai.api.model.Entity;
 
 @Controller
 @RequestMapping("/webhook")
@@ -32,6 +33,14 @@ public class HelloWorldController {
         if(obj.contains("facebook")){
         	System.out.println("Peticion de facebook");
         	response = "hola usuario de facebook";
+        	System.out.println("entidades: ");
+        	System.out.println("***");
+        	for (Entity entidad: request.getEntities()){
+        		System.out.println(entidad);
+        		System.out.println("***");
+        	}
+        	System.out.println("***");
+        	request.getEntities();
         	JsonMapper mapper = new DefaultJsonMapper();
         	WebhookObject webhookObject = mapper.toJavaObject(obj.toString(), WebhookObject.class);
         	System.out.println(webhookObject.toString());
